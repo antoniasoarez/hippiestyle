@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hippiestyle | cadastro</title>
+
+    <link rel="stylesheet" href="style/cadastro.css">
+    <script src="script/cadastro.js"></script>
+</head>
+
+<body>
+    <!----Página de cadastro do site, onde o usuário pode criar uma conta para acessar funcionalidades exclusivas.---->
+    <img class="logo" src="src/images/logo.png" alt="logomarca do site hippiestyle">
+
+    <h1>hippiestyle</h1>
+    <h2>cadastro</h2>
+
+    <main>
+        <section class="cadastro">
+            <form>
+
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" placeholder="Maria Perez">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seuemail@email.com.br">
+
+                <label for="telefone">Telefone (opcional)</label>
+                <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+
+                <label for="senha">Senha</label>
+                <div class="campo-senha">
+                    <input type="password" id="senha" placeholder="suasenha">
+                </div>
+
+                <label for="confirmar">Confirmar senha</label>
+                <div class="campo-senha">
+                    <input type="password" id="confirmar" placeholder="suasenha">
+                    
+                </div>
+
+                <button class="botao" type="button" onclick="criarConta()">
+                                        criar conta
+                                    </button>
+            </form>
+            
+            
+                    <p><a href="pages/login.html">possuo uma conta</a></p>
+        </section>
+    </main>
+
+
+</body>
+
+</html>
