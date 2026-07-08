@@ -16,12 +16,11 @@ function saudarUsuario() {
  */
 const catalogo = {
     matue: {
-        maquinaDoTempo: ["É Sal", "Máquina do Tempo", "Cogulândia", "Antes", "Gorila Roxo", "Vem Chapar"],
-        tresTresTres: ["333", "Crack com Mussarela", "O Chamado", "Castlevania", "Voo do Dragão", "Maria"]
+        tresTresTres: ["333", "Castlevania", "O Som"]
     },
     lilgiela33: {
         tantoFaz: ["Tanto Faz", "Sem Sentido", "Noite Fria", "Olhos Caídos", "Cicatrizes", "Vazio"],
-        hateThisAlbum: ["hate", "dor", "fake", "numb", "scars", "alone"]
+
     }
 };
 

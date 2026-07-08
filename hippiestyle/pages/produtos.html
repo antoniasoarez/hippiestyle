@@ -1,20 +1,184 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hippiestyle | produtos</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="produtos.css">
-    <script src="produtos.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Hippiestyle | Produtos </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="../style/produtos.css">
 </head>
 
 <body>
-    
-</body>
 
+<!-- CABEÇALHO: igual ao da página Home e Cadastro, com o nome da marca e o menu -->
+<header>
+  <h1>Hippiestyle</h1>
+  <nav>
+    <a href="../pages/home.html">Início</a>
+    <a href="../pages/produtos.html">Produtos</a>
+    <a href="../pages/sobre.html">Sobre</a>
+    <a href="../pages/contato.html">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- SEÇÃO DE PRODUTOS: agrupa as duas coleções por artista -->
+  <section>
+    <h2>Produtos</h2>
+
+    <!-- Categoria: Matuê -->
+    <h3>333 (Matuê)</h3>
+
+    <!-- Produto 1 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto1.jpg"
+        alt="Jaqueta jeans preta com bordado do número 333">
+      <h4>Jaqueta Maria</h4>
+      <p>R$ 249,90</p>
+      <!-- O botão chama a função verProduto(), passando o nome e o preço do produto -->
+      <button type="button" onclick="verProduto('Jaqueta 333', 249.90)">ver produto</button>
+    </div>
+
+    <br>
+
+    <!-- Produto 2 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto2.jpg"
+        alt="Camiseta preta estampada com o logo da coleção 333">
+      <h4>Camiseta 333</h4>
+      <p>R$ 129,90</p>
+      <button type="button" onclick="verProduto('Camiseta 333', 129.90)">ver produto</button>
+    </div>
+
+    <br>
+
+    <!-- Produto 3 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto3.jpg"
+        alt="Boné preto bordado com o número 333">
+      <h4>Boné 333</h4>
+      <p>R$ 99,90</p>
+      <button type="button" onclick="verProduto('Boné 333', 99.90)">ver produto</button>
+    </div>
+
+    <br>
+
+    <!-- Produto 4 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto4.png"
+        alt="Tênis cinza claro com solado alto e azul claro, representando a faixa O Som">
+      <h4>Tênis O Som</h4>
+      <p>R$ 819,90</p>
+      <button type="button" onclick="verProduto('Tênis O Som', 819.90)">ver produto</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Categoria: Lil Giela -->
+    <h3>Tanto Faz (Lil Giela)</h3>
+
+    <!-- Produto 5 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto5.jpg"
+        alt="Tricô cinza em estação de metrô com luz fluorescente">
+      <h4>Tricô Tanto Faz</h4>
+      <p>R$ 189,90</p>
+      <button type="button" onclick="verProduto('Tricô Tanto Faz', 189.90)">ver produto</button>
+    </div>
+
+    <br>
+
+    <!-- Produto 6 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto6.jpg"
+        alt="Colete cinza com detalhes refletivos e bolsos grandes">
+      <h4>Colete Nunca Entenderam</h4>
+      <p>R$ 350,90</p>
+      <button type="button" onclick="verProduto('Colete Nunca Entenderam', 350.90)">ver produto</button>
+    </div>
+
+    <br>
+
+    <!-- Produto 7 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto7.jpg"
+        alt="Bolsa cinza pequena com detalhe refletivo">
+      <h4>Bolsa Tanto Faz</h4>
+      <p>R$ 149,90</p>
+      <button type="button" onclick="verProduto('Bolsa Tanto Faz', 149.90)">ver produto</button>
+    </div>
+
+    <br>
+
+    <!-- Produto 8 -->
+    <div class="colecao">
+      <img
+        src="../src/images/produto8.jpg"
+        alt="Touca preta com etiqueta da coleção Tanto Faz">
+      <h4>Touca Sala da Escola </h4>
+      <p>R$ 139,90</p>
+      <button type="button" onclick="verProduto('Touca Sala da Escola', 139.90)">ver produto</button>
+    </div>
+
+  </section>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- SEÇÃO DO CARRINHO: mostra os produtos que a pessoa clicou em "ver produto" -->
+  <section>
+    <h2>Carrinho</h2>
+
+    <!-- Aqui aparece a mensagem de sucesso ou erro, tipo "produto adicionado" -->
+    <p id="mensagem"></p>
+
+    <!-- Contador de quantos produtos tem no carrinho -->
+    <p id="txtQuantidadeCarrinho">Total de produtos: 0</p>
+
+    <!-- Lista com os produtos adicionados -->
+    <ul id="ulCarrinho"></ul>
+
+    <!-- Valor total somando o preço de todos os produtos -->
+    <p id="txtTotalCarrinho">Total: R$ 0,00</p>
+
+    <!-- Botão para remover o último produto adicionado -->
+    <button type="button" onclick="removerUltimoProduto()">remover último</button>
+
+    <!-- Botão para colocar os produtos em ordem alfabética -->
+    <button type="button" onclick="ordenarCarrinho()">ordenar carrinho</button>
+
+    <!-- Botão para esvaziar o carrinho inteiro -->
+    <button type="button" onclick="limparCarrinho()">limpar carrinho</button>
+  </section>
+
+</main>
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- RODAPÉ: igual ao da página Home -->
+<footer>
+  <h3>Hippiestyle</h3>
+  <p>Hippiestyle©. todos os direitos reservados.</p>
+</footer>
+
+<!-- Script da página Produtos -->
+<script src="../script/produtos.js"></script>
+
+</body>
 </html>

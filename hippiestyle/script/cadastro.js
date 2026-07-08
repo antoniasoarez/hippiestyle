@@ -1,11 +1,11 @@
 /* SISTEMA DE NOTIFICAÇÕES (TOAST) */
-//METADE DOS COMENTARIO FOI FEITO PELOS DEUSESSS
 
 /**
  * Injeta no <head> o CSS necessário para estilizar as notificações.
  * Isso é feito criando uma tag <style> e adicionando as regras dentro dela.
  * Assim, não precisamos mexer no arquivo de estilo da página.
  */
+
 function criarEstiloNotificacao() {
     // Evita duplicar o estilo caso a função seja chamada mais de uma vez
     if (document.getElementById('estilo-notificacao')) return;
@@ -14,7 +14,7 @@ function criarEstiloNotificacao() {
     estilo.id = 'estilo-notificacao';
 
     estilo.textContent = `
-        /* Container fixo no canto superior direito que vai empilhar as notificações */
+        // Container fixo no canto superior direito que vai empilhar as notificações 
         #container-notificacoes {
             position: fixed;
             top: 20px;
@@ -89,7 +89,7 @@ function criarEstiloNotificacao() {
     `;
 
     document.head.appendChild(estilo);
-}//aq acaba style das notificationsss
+}//acaba style das notificationsss
 
 /*
  * Garante que exista na página um container para empilhar as notificações
@@ -106,7 +106,7 @@ function obterContainerNotificacoes() {
 
     return container;
 }
-//messi arabe nao ensinou isso mas e so um detalhe bobo pras notifications nao vim como alertt
+//Detalhe bobo pras notifications não vim como alertt
 /**
  * Função principal para exibir uma notificação na tela.
  * 
@@ -115,6 +115,7 @@ function obterContainerNotificacoes() {
  * @param {number} duracao - Tempo em milissegundos até a notificação sumir sozinha.
  * @param {HTMLElement|null} botaoExtra - Um botão opcional para colocar dentro da notificação.
  */
+
 function mostrarNotificacao(texto, tipo, duracao, botaoExtra) {
     // Garante que o CSS e o container já existem antes de criar a notificação
     criarEstiloNotificacao();
@@ -159,12 +160,10 @@ function mostrarNotificacao(texto, tipo, duracao, botaoExtra) {
 /**
  * Remove a notificação da tela com uma animação suave de saída.
  */
-//essa aq o pai sabe
 function esconderNotificacao(notificacao) {
     notificacao.classList.remove('mostrar');
     notificacao.classList.add('esconder');
 
-    //grandes deuses sempre salvando noisss
     // Só remove o elemento do DOM depois que a animação (0.4s) terminar
     setTimeout(() => {
         notificacao.remove();
@@ -173,7 +172,6 @@ function esconderNotificacao(notificacao) {
 
 
 /* LÓGICA DE CADASTRO */
-//aq o pai domina
 //falta so colocar pra ser obrigatorio os caracteres especiais e numeros na senha, mas isso é so um detalhe bobo
 /**
  * Função principal, chamada quando o botão "Criar conta" é clicado.
@@ -199,7 +197,7 @@ function criarConta() {
         return;
     }
 
-    //messi ensinou ontem entao ta meio difff
+
     // 4. Busca a lista de usuários já cadastrados no localStorage
     let usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
@@ -225,7 +223,7 @@ function criarConta() {
         senha: senha
     };
 
-    //dammnn mt diff pedi ajuda externa 
+
     // 7. Adiciona o novo usuário no array de usuários
     usuarios.push(novoUsuario);
 
@@ -245,13 +243,13 @@ function criarConta() {
  */
 function exibirNotificacaoDeCadastroConcluido() {
 
-    //aprendi agora 
+
     // Cria o botão que ficará dentro da notificação
     const botaoLogin = document.createElement('button');
     botaoLogin.textContent = 'Ir para Login';
 
 
-    //deuses....
+
     // Cria a notificação de sucesso, com duração de 5 segundos
     // (tempo em que ela deve sumir e redirecionar automaticamente)
     const { notificacao, tempoParaEsconder } = mostrarNotificacao(
@@ -262,7 +260,6 @@ function exibirNotificacaoDeCadastroConcluido() {
     );
 
 
-    //ajuda externa de novo, pq o pai nao sabe tudo
     // Ao clicar no botão, cancela o redirecionamento automático
     // (para não rodar duas vezes) e vai direto para o login
     botaoLogin.addEventListener('click', function () {
@@ -277,7 +274,7 @@ function exibirNotificacaoDeCadastroConcluido() {
 }
 
 
-//aq ja e padraio neeee
+
 /**
  * Função auxiliar para limpar todos os campos do formulário
  * depois que o cadastro é concluído com sucesso.
