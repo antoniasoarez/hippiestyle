@@ -3,9 +3,7 @@
 /**
  * Injeta no <head> o CSS necessário para estilizar as notificações.
  * Isso é feito criando uma tag <style> e adicionando as regras dentro dela.
- * Assim, não precisamos mexer no arquivo de estilo da página.
  */
-
 function criarEstiloNotificacao() {
     // Evita duplicar o estilo caso a função seja chamada mais de uma vez
     if (document.getElementById('estilo-notificacao')) return;
@@ -14,13 +12,14 @@ function criarEstiloNotificacao() {
     estilo.id = 'estilo-notificacao';
 
     estilo.textContent = `
-        // Container fixo no canto superior direito que vai empilhar as notificações 
+        /* Container fixo no canto superior direito que vai empilhar as notificações */
         #container-notificacoes {
-            position: fixed;
+            position: fixed; /* CORREÇÃO: Adicionado position fixed */
             top: 20px;
             right: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 10px;
             z-index: 9999;
         }
@@ -89,9 +88,9 @@ function criarEstiloNotificacao() {
     `;
 
     document.head.appendChild(estilo);
-}//acaba style das notificationsss
+}
 
-/*
+/**
  * Garante que exista na página um container para empilhar as notificações
  * Se ainda não existir, cria e adiciona no final do <body>
  */
@@ -106,54 +105,36 @@ function obterContainerNotificacoes() {
 
     return container;
 }
-//Detalhe bobo pras notifications não vim como alertt
+
 /**
  * Função principal para exibir uma notificação na tela.
- * 
- * @param {string} texto - Mensagem que será exibida.
- * @param {string} tipo - 'sucesso', 'erro' ou 'info' (define a cor).
- * @param {number} duracao - Tempo em milissegundos até a notificação sumir sozinha.
- * @param {HTMLElement|null} botaoExtra - Um botão opcional para colocar dentro da notificação.
  */
-
 function mostrarNotificacao(texto, tipo, duracao, botaoExtra) {
-    // Garante que o CSS e o container já existem antes de criar a notificação
     criarEstiloNotificacao();
     const container = obterContainerNotificacoes();
 
-    // Cria o elemento da notificação
     const notificacao = document.createElement('div');
     notificacao.className = `notificacao ${tipo}`;
 
-    // Cria o texto da mensagem dentro da notificação
     const mensagem = document.createElement('p');
     mensagem.textContent = texto;
     mensagem.style.margin = '0';
     notificacao.appendChild(mensagem);
 
-    // Se foi passado um botão extra (ex: "Ir para Login"), adiciona dentro da notificação
     if (botaoExtra) {
         notificacao.appendChild(botaoExtra);
     }
 
-    // Adiciona a notificação no container
     container.appendChild(notificacao);
 
-
-    //isso aqui foi os deuses qyue criaram, pq sem isso a notificação nao aparece com animação de entrada
-    // Pequeno atraso antes de adicionar a classe "mostrar".
-    // Isso é necessário para o navegador aplicar a transição de entrada corretamente.
     setTimeout(() => {
         notificacao.classList.add('mostrar');
     }, 10);
 
-    // Depois do tempo definido, inicia a animação de saída
     const tempoParaEsconder = setTimeout(() => {
         esconderNotificacao(notificacao);
     }, duracao);
 
-    // Retorna a notificação e o timer, caso seja necessário cancelar o desaparecimento
-    // automático (por exemplo, se o usuário já clicou em um botão dentro dela)
     return { notificacao, tempoParaEsconder };
 }
 
@@ -164,7 +145,6 @@ function esconderNotificacao(notificacao) {
     notificacao.classList.remove('mostrar');
     notificacao.classList.add('esconder');
 
-    // Só remove o elemento do DOM depois que a animação (0.4s) terminar
     setTimeout(() => {
         notificacao.remove();
     }, 400);
@@ -172,40 +152,39 @@ function esconderNotificacao(notificacao) {
 
 
 /* LÓGICA DE CADASTRO */
-//falta so colocar pra ser obrigatorio os caracteres especiais e numeros na senha, mas isso é so um detalhe bobo
+
 /**
  * Função principal, chamada quando o botão "Criar conta" é clicado.
  */
 function criarConta() {
-
-    // 1. Captura os valores digitados nos campos do formulário
     const nome = document.getElementById('nome').value.trim();
     const email = document.getElementById('email').value.trim();
-    const telefone = document.getElementById('telefone').value.trim(); // campo opcional
+    const telefone = document.getElementById('telefone').value.trim();
     const senha = document.getElementById('senha').value.trim();
     const confirmar = document.getElementById('confirmar').value.trim();
 
-    // 2. Verifica se os campos obrigatórios foram preenchidos
+    // Validação de campos obrigatórios
     if (nome === '' || email === '' || senha === '' || confirmar === '') {
         mostrarNotificacao('Preencha todos os campos obrigatórios (nome, e-mail e senha).', 'erro', 4000);
         return;
     }
 
-    // 3. Verifica se a senha e a confirmação de senha são iguais
+    // ADIÇÃO: Validação de senha forte (Mínimo de 8 caracteres, pelo menos uma letra, um número e um caractere especial)
+    const regexSenhaForte = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    if (!regexSenhaForte.test(senha)) {
+        mostrarNotificacao('A senha deve ter no mínimo 8 caracteres, contendo pelo menos uma letra, um número e um caractere especial.', 'erro', 5000);
+        return;
+    }
+
+    // Verifica se as senhas coincidem
     if (senha !== confirmar) {
         mostrarNotificacao('As senhas não coincidem. Verifique e tente novamente.', 'erro', 4000);
         return;
     }
 
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-    // 4. Busca a lista de usuários já cadastrados no localStorage
-    let usuarios = JSON.parse(localStorage.getItem('usuarios'));
-
-    if (usuarios === null) {
-        usuarios = [];
-    }
-
-    // 5. Verifica se já existe um usuário cadastrado com o mesmo e-mail
+    // Verifica se o e-mail já está cadastrado
     const emailJaExiste = usuarios.some(function (usuario) {
         return usuario.email.toLowerCase() === email.toLowerCase();
     });
@@ -215,7 +194,6 @@ function criarConta() {
         return;
     }
 
-    // 6. Monta o objeto do novo usuário
     const novoUsuario = {
         nome: nome,
         email: email,
@@ -223,35 +201,17 @@ function criarConta() {
         senha: senha
     };
 
-
-    // 7. Adiciona o novo usuário no array de usuários
     usuarios.push(novoUsuario);
-
-    // 8. Salva o array atualizado de volta no localStorage
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-    // 9. Limpa os campos do formulário
     limparFormulario();
-
-    // 10. Mostra a notificação de sucesso com um botão para ir ao login
     exibirNotificacaoDeCadastroConcluido();
 }
 
-/**
- * Cria e exibe a notificação de sucesso do cadastro, com o botão
- * "Ir para Login" dentro dela, além do redirecionamento automático.
- */
 function exibirNotificacaoDeCadastroConcluido() {
-
-
-    // Cria o botão que ficará dentro da notificação
     const botaoLogin = document.createElement('button');
     botaoLogin.textContent = 'Ir para Login';
 
-
-
-    // Cria a notificação de sucesso, com duração de 5 segundos
-    // (tempo em que ela deve sumir e redirecionar automaticamente)
     const { notificacao, tempoParaEsconder } = mostrarNotificacao(
         'Cadastro realizado com sucesso!',
         'sucesso',
@@ -259,26 +219,20 @@ function exibirNotificacaoDeCadastroConcluido() {
         botaoLogin
     );
 
+    // CORREÇÃO: Redirecionamento configurado num único local centralizado para evitar loops
+    const redirecionar = () => {
+        window.location.href = 'pages/login.html';
+    };
 
-    // Ao clicar no botão, cancela o redirecionamento automático
-    // (para não rodar duas vezes) e vai direto para o login
+    const timeoutRedirecionamento = setTimeout(redirecionar, 5000);
+
     botaoLogin.addEventListener('click', function () {
         clearTimeout(tempoParaEsconder);
-        window.location.href = 'pages/login.html';
+        clearTimeout(timeoutRedirecionamento);
+        redirecionar();
     });
-
-    // Redireciona automaticamente após 5 segundos, caso o usuário não clique no botão
-    setTimeout(function () {
-        window.location.href = 'pages/login.html';
-    }, 5000);
 }
 
-
-
-/**
- * Função auxiliar para limpar todos os campos do formulário
- * depois que o cadastro é concluído com sucesso.
- */
 function limparFormulario() {
     document.getElementById('nome').value = '';
     document.getElementById('email').value = '';

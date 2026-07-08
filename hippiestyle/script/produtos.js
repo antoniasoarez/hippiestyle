@@ -70,7 +70,7 @@ function listarCarrinho() {
 
 // Função chamada quando a pessoa clica no botão "ver produto" de um card
 // Ela recebe o nome e o preço do produto clicado
-function verProduto(nome, preco) {
+function addCarrinho(nome, preco) {
 
   // Cria um objeto simples para representar o produto
   var produto = {
@@ -131,5 +131,28 @@ function ordenarCarrinho() {
 
   mostrarMensagem("Carrinho organizado.", "sucesso");
 
+  listarCarrinho();
+}
+
+// Função que finaliza a compra, mostrando o total e esvaziando o carrinho
+function finalizarCompra() {
+  if (carrinho.length === 0) {
+    mostrarMensagem("O carrinho está vazio. Adicione produtos antes de finalizar a compra.", "erro");
+    return;
+  }
+
+  // Calcula o total da compra
+  var total = 0;
+  for (var i = 0; i < carrinho.length; i++) {
+    total += carrinho[i].preco;
+  }
+
+  // Mostra a mensagem de finalização com o total
+  mostrarMensagem("Compra finalizada! Total: R$ " + total.toFixed(2).replace(".", ","), "sucesso");
+
+  // Esvazia o carrinho
+  carrinho = [];
+
+  // Atualiza a lista mostrada na tela
   listarCarrinho();
 }

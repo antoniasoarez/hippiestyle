@@ -33,12 +33,12 @@
     <!-- Produto 1 -->
     <div class="colecao">
       <img
-        src="../src/images/produto1.jpg"
+        src="../src/images/produto1.png"
         alt="Jaqueta jeans preta com bordado do número 333">
       <h4>Jaqueta Maria</h4>
       <p>R$ 249,90</p>
-      <!-- O botão chama a função verProduto(), passando o nome e o preço do produto -->
-      <button type="button" onclick="verProduto('Jaqueta 333', 249.90)">ver produto</button>
+      <!-- O botão chama a função addCarrinho(), passando o nome e o preço do produto -->
+      <button type="button" onclick="addCarrinho('Jaqueta 333', 249.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -46,11 +46,11 @@
     <!-- Produto 2 -->
     <div class="colecao">
       <img
-        src="../src/images/produto2.jpg"
+        src="../src/images/produto2.png"
         alt="Camiseta preta estampada com o logo da coleção 333">
       <h4>Camiseta 333</h4>
       <p>R$ 129,90</p>
-      <button type="button" onclick="verProduto('Camiseta 333', 129.90)">ver produto</button>
+      <button type="button" onclick="addCarrinho('Camiseta 333', 129.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -58,11 +58,11 @@
     <!-- Produto 3 -->
     <div class="colecao">
       <img
-        src="../src/images/produto3.jpg"
-        alt="Boné preto bordado com o número 333">
-      <h4>Boné 333</h4>
-      <p>R$ 99,90</p>
-      <button type="button" onclick="verProduto('Boné 333', 99.90)">ver produto</button>
+        src="../src/images/produto3.png"
+        alt="Boné preto bordado com artes brancas">
+      <h4>Boné Isso é Sério</h4>
+      <p>R$ 199,90</p>
+      <button type="button" onclick="addCarrinho('Boné Isso é Sério', 199.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -74,7 +74,7 @@
         alt="Tênis cinza claro com solado alto e azul claro, representando a faixa O Som">
       <h4>Tênis O Som</h4>
       <p>R$ 819,90</p>
-      <button type="button" onclick="verProduto('Tênis O Som', 819.90)">ver produto</button>
+      <button type="button" onclick="addCarrinho('Tênis O Som', 819.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -92,7 +92,7 @@
         alt="Tricô cinza em estação de metrô com luz fluorescente">
       <h4>Tricô Tanto Faz</h4>
       <p>R$ 189,90</p>
-      <button type="button" onclick="verProduto('Tricô Tanto Faz', 189.90)">ver produto</button>
+      <button type="button" onclick="addCarrinho('Tricô Tanto Faz', 189.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -104,7 +104,7 @@
         alt="Colete cinza com detalhes refletivos e bolsos grandes">
       <h4>Colete Nunca Entenderam</h4>
       <p>R$ 350,90</p>
-      <button type="button" onclick="verProduto('Colete Nunca Entenderam', 350.90)">ver produto</button>
+      <button type="button" onclick="addCarrinho('Colete Nunca Entenderam', 350.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -112,11 +112,11 @@
     <!-- Produto 7 -->
     <div class="colecao">
       <img
-        src="../src/images/produto7.jpg"
-        alt="Bolsa cinza pequena com detalhe refletivo">
-      <h4>Bolsa Tanto Faz</h4>
+        src="../src/images/produto7.png"
+        alt="Bolsa preta pequena com detalhes refletivos">
+      <h4>Bolsa GAAP</h4>
       <p>R$ 149,90</p>
-      <button type="button" onclick="verProduto('Bolsa Tanto Faz', 149.90)">ver produto</button>
+      <button type="button" onclick="addCarrinho('Bolsa GAAP', 149.90)">adicionar ao carrinho</button>
     </div>
 
     <br>
@@ -128,7 +128,7 @@
         alt="Touca preta com etiqueta da coleção Tanto Faz">
       <h4>Touca Sala da Escola </h4>
       <p>R$ 139,90</p>
-      <button type="button" onclick="verProduto('Touca Sala da Escola', 139.90)">ver produto</button>
+      <button type="button" onclick="addCarrinho('Touca Sala da Escola', 139.90)">adicionar ao carrinho</button>
     </div>
 
   </section>
@@ -162,6 +162,9 @@
 
     <!-- Botão para esvaziar o carrinho inteiro -->
     <button type="button" onclick="limparCarrinho()">limpar carrinho</button>
+
+    <button type="button" onclick="finalizarCompra()">finalizar compra</button>
+    <p id="finalizacao"></p>
   </section>
 
 </main>
