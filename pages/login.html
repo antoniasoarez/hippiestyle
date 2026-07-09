@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hippiestyle | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../style/login.css">  
+</head>
+<body>
+
+<header>
+    <h1>Hippiestyle</h1>
+    <nav>
+        <a href="../pages/home.html">Início</a>
+        <a href="../pages/produtos.html">Produtos</a>
+        <a href="../pages/carrinho.html">Carrinho</a>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Fazer login</h2>
+
+        <div id="mensagem"></div>
+
+        <form>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="seuemail@email.com">
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="suaSenh@123!">
+
+            <button type="button" onclick="fazerLogin()">Fazer login</button>
+
+            <p>Não possui uma conta? <a href="../index.html">Crie uma conta</a></p>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>Hippiestyle© - Todos os direitos reservados</p>
+</footer>
+
+<script src="../script/login.js"></script>
+
+</body>
+</html>

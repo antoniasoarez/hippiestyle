@@ -1,0 +1,174 @@
+/* Importando Google Fonts: Space Grotesk para um visual streetwear/futurista */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+
+/* Variáveis de cores baseadas na identidade visual solicitada */
+:root {
+    --black: #050505;
+    --white: #ffffff;
+    --silver: #c0c0c0;
+    --gray: #2a2a2a;
+    --blue-metal: #4a90e2;
+    --text-muted: #888888;
+    --font-main: 'Space Grotesk', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Layout Flexbox centralizado (usado no cadastro, login e produtos) */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+}
+
+/* Formulários */
+.form-box {
+    background-color: var(--gray);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-box h2 {
+    text-align: center;
+    color: var(--silver);
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--black);
+    border: 1px solid var(--text-muted);
+    color: var(--white);
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--blue-metal);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+button {
+    background-color: var(--silver);
+    color: var(--black);
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-danger { background-color: #ff4757; color: white; }
+.btn-danger:hover { background-color: #ff6b81; }
+.btn-outline { background-color: transparent; border: 1px solid var(--silver); color: var(--silver); }
+.btn-outline:hover { background-color: var(--silver); color: var(--black); }
+
+/* Mensagens de Feedback */
+.msg { padding: 10px; border-radius: 6px; text-align: center; display: none; font-weight: 600; }
+.msg.error { background-color: rgba(255, 71, 87, 0.2); color: #ff4757; border: 1px solid #ff4757; display: block; }
+.msg.success { background-color: rgba(74, 144, 226, 0.2); color: var(--blue-metal); border: 1px solid var(--blue-metal); display: block; }
+
+/* Header da Home */
+header {
+    background-color: var(--black);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray);
+}
+
+.logo-container { display: flex; align-items: center; gap: 10px; }
+.logo-container h1 { font-size: 1.5rem; letter-spacing: 2px; color: var(--silver); }
+
+nav ul { display: flex; gap: 20px; list-style: none; }
+nav a { color: var(--silver); text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+nav a:hover { color: var(--blue-metal); }
+.user-greeting { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Home / Grid de Produtos */
+main { padding: 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+.banner { text-align: center; margin-bottom: 60px; }
+.banner h2 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
+.banner p { color: var(--text-muted); font-size: 1.2rem; }
+
+.artist-section { margin-bottom: 60px; }
+.artist-section h3 { font-size: 2rem; border-bottom: 2px solid var(--blue-metal); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+.album-title { font-size: 1.2rem; color: var(--silver); margin: 20px 0; }
+
+.grid-roupas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Cards semânticos (Article) */
+article.card {
+    background-color: var(--gray);
+    width: calc(33.333% - 14px);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+article.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-metal);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.2);
+}
+.card-icon { margin-bottom: 15px; }
+.card h4 { font-size: 1.1rem; margin-bottom: 10px; }
+.card p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Página de Produtos (Lista) */
+.lista-produtos { margin-top: 30px; width: 100%; max-width: 600px; }
+.lista-produtos h3 { text-align: center; margin-bottom: 15px; }
+.stats { text-align: center; color: var(--blue-metal); margin-bottom: 20px; font-weight: bold; }
+ul#ulProdutos { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+ul#ulProdutos li { background-color: var(--gray); padding: 15px; border-radius: 6px; display: flex; justify-content: space-between; border-left: 4px solid var(--silver); }
+
+/* Responsividade simples */
+@media (max-width: 768px) {
+    article.card { width: calc(50% - 10px); }
+    header { flex-direction: column; gap: 20px; text-align: center; }
+}
+@media (max-width: 480px) {
+    article.card { width: 100%; }
+}

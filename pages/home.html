@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Hippiestyle | Home </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../style/home.css">
+
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <h1>Hippiestyle</h1>
+    <nav>
+      <a id="propriaPage" href="../pages/home.html">Início</a>
+      <a href="../pages/produtos.html">Produtos</a>
+      <a href="../pages/carrinho.html">Carrinho</a>
+    </nav>
+  </header>
+
+  <main>
+
+
+    <!-- SEÇÃO DE COLEÇÕES: agrupa as coleções (álbuns) por artistas -->
+    <section>
+      <h2>Coleções</h2>
+
+      <!-- Categoria: Matuê -->
+      <h3>Matuê</h3>
+
+      <!-- Coleção 1 -->
+      <div class="colecao">
+        <img src="../src/images/img1.jpg" alt="Jaqueta jeans preta com bordado do número 333">
+        <br>
+        <p>333</p>
+        <a href="../pages/produtos.html#colecao-matue">
+          <button type="button">ver coleção</button>
+        </a>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <!-- Categoria: lilgiela33 -->
+      <h3>lilgiela33</h3>
+
+      <!-- Coleção 2 -->
+      <div class="colecao">
+        <img src="../src/images/img2.jpg" alt="Tricô cinza em estação de metrô com luz fluorescente">
+        <br>
+        <p>tanto faz</p>
+        <a href="../pages/produtos.html#colecao-lilgiela33">
+          <button type="button">ver coleção</button>
+        </a>
+      </div>
+
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- SEÇÃO DE NEWSLETTER -->
+    <section>
+      <h2>Acesso antecipado</h2>
+      <p>inscreva-se para receber os próximos lançamentos</p>
+
+      <form>
+        <label for="email-newsletter">Seu e-mail</label>
+        <input type="email" id="email-newsletter" placeholder="seuemail@email.com.br">
+
+        <!-- O botão chama a função inscrever(), que está no arquivo home.js -->
+        <button type="button" onclick="inscrever()">entrar no arquivo</button>
+      </form>
+
+      <!-- Aqui aparece a mensagem depois que a pessoa clica no botão -->
+      <p id="mensagem-inscricao"></p>
+    </section>
+
+  </main>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <h3>Hippiestyle</h3>
+    <p>Hippiestyle©. todos os direitos reservados.</p>
+
+  </footer>
+
+  <!-- Script da página Home -->
+  <script src="../script/home.js"></script>
+
+</body>
+
+</html>
