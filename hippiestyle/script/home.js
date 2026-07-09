@@ -16,10 +16,10 @@ function saudarUsuario() {
  */
 const catalogo = {
     matue: {
-        tresTresTres: ["333", "Castlevania", "O Som"]
+        tresTresTres: ["Maria", "333", "Isso é Sério", "O Som"]
     },
     lilgiela33: {
-        tantoFaz: ["Tanto Faz", "Sem Sentido", "Noite Fria", "Olhos Caídos", "Cicatrizes", "Vazio"],
+        tantoFaz: ["Tanto Faz", "Nunca Entenderam", "GAAP", "Sala da Escola"]
 
     }
 };

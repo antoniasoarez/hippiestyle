@@ -24,6 +24,16 @@ header {
   padding: 50px 20px 30px 20px;
 }
 
+/* Modifica a seção do cabeçalho de acordo com a página que o usuário está*/
+#propriaPage {
+  color: #fff;
+  text-shadow: 0 0 5px #fff,
+    0 0 10px #343d5a,
+    0 0 20px #343d5a,
+    0 0 40px #343d5a,
+    0 0 80px #343d5a;
+}
+
 /* O nome da marca usa a fonte Metal Mania, igual na página de Cadastro */
 h1 {
   font-family: 'Metal Mania', cursive;
@@ -262,4 +272,23 @@ footer a:hover {
 /* Espaço entre os botões do carrinho */
 section button {
   margin: 6px;
+}
+
+/* Responsividade simples */
+@media (max-width: 768px) {
+  article.card {
+    width: calc(50% - 10px);
+  }
+
+  header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  article.card {
+    width: 100%;
+  }
 }

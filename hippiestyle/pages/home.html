@@ -1,105 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Hippiestyle | Home </title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="../style/home.css">  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Hippiestyle | Home </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../style/home.css">
 
 </head>
 
 <body>
 
-<!-- CABEÇALHO: igual ao da página de Cadastro, com o nome da marca e o menu -->
-<header>
-  <h1>Hippiestyle</h1>
-  <nav>
-    <a href="#">Início</a>
-    <a href="#">Produtos</a>
-    <a href="#">Sobre</a>
-    <a href="#">Contato</a>
-  </nav>
-</header>
+  <!-- CABEÇALHO -->
+  <header>
+    <h1>Hippiestyle</h1>
+    <nav>
+      <a id="propriaPage" href="../pages/home.html">Início</a>
+      <a href="../pages/produtos.html">Produtos</a>
+      <a href="../pages/carrinho.html">Carrinho</a>
+    </nav>
+  </header>
 
-<main>
+  <main>
 
 
-  <!-- SEÇÃO DE COLEÇÕES: agrupa as coleções (álbuns) por artistas -->
-  <section>
-    <h2>Coleções</h2>
+    <!-- SEÇÃO DE COLEÇÕES: agrupa as coleções (álbuns) por artistas -->
+    <section>
+      <h2>Coleções</h2>
 
-    <!-- Categoria: Matuê -->
-    <h3>Matuê</h3>
+      <!-- Categoria: Matuê -->
+      <h3>Matuê</h3>
 
-    <!-- Coleção 1 -->
-    <div class="colecao">
-      <img
-        src="../src/images/img1.jpg"
-        alt="Jaqueta jeans preta com bordado do número 333">
+      <!-- Coleção 1 -->
+      <div class="colecao">
+        <img src="../src/images/img1.jpg" alt="Jaqueta jeans preta com bordado do número 333">
+        <br>
+        <p>333</p>
+        <a href="../pages/produtos.html#colecao-matue">
+          <button type="button">ver coleção</button>
+        </a>
+      </div>
+
       <br>
-      <p>333</p>
-      <button type="button">ver coleção</button>
-    </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <!-- Categoria: lilgiela33 -->
-    <h3>lilgiela33</h3>
-
-    <!-- Coleção 2 -->
-    <div class="colecao">
-      <img
-        src="../src/images/img2.jpg"
-        alt="Tricô cinza em estação de metrô com luz fluorescente">
       <br>
-      <p>tanto faz</p>
-      <button type="button">ver coleção</button>
-    </div>
+      <br>
+      <br>
 
-  </section>
+      <!-- Categoria: lilgiela33 -->
+      <h3>lilgiela33</h3>
 
-    <br>
-    <br>
-    <br>
-    <br>
+      <!-- Coleção 2 -->
+      <div class="colecao">
+        <img src="../src/images/img2.jpg" alt="Tricô cinza em estação de metrô com luz fluorescente">
+        <br>
+        <p>tanto faz</p>
+        <a href="../pages/produtos.html#colecao-lilgiela33">
+          <button type="button">ver coleção</button>
+        </a>
+      </div>
 
-  <!-- SEÇÃO DE NEWSLETTER: mesmo padrão de formulário da página de Cadastro -->
-  <section>
-    <h2>Acesso antecipado</h2>
-    <p>inscreva-se para receber os próximos lançamentos</p>
-
-    <form>
-      <label for="email-newsletter">Seu e-mail</label>
-      <input type="email" id="email-newsletter" placeholder="seuemail@email.com.br">
-
-      <!-- O botão chama a função inscrever(), que está no arquivo home.js -->
-      <button type="button" onclick="inscrever()">entrar no arquivo</button>
-    </form>
-
-    <!-- Aqui aparece a mensagem depois que a pessoa clica no botão -->
-    <p id="mensagem-inscricao"></p>
-  </section>
-
-</main>
+    </section>
 
     <br>
     <br>
     <br>
     <br>
 
-<!-- RODAPÉ: nome da marca, direitos autorais e os links de sociais e jurídico -->
-<footer>
-  <h3>Hippiestyle</h3>
-  <p>Hippiestyle©. todos os direitos reservados.</p>
+    <!-- SEÇÃO DE NEWSLETTER -->
+    <section>
+      <h2>Acesso antecipado</h2>
+      <p>inscreva-se para receber os próximos lançamentos</p>
 
-</footer>
+      <form>
+        <label for="email-newsletter">Seu e-mail</label>
+        <input type="email" id="email-newsletter" placeholder="seuemail@email.com.br">
 
-<!-- Script da página Home -->
-<script src="../script/home.js"></script>
+        <!-- O botão chama a função inscrever(), que está no arquivo home.js -->
+        <button type="button" onclick="inscrever()">entrar no arquivo</button>
+      </form>
+
+      <!-- Aqui aparece a mensagem depois que a pessoa clica no botão -->
+      <p id="mensagem-inscricao"></p>
+    </section>
+
+  </main>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <h3>Hippiestyle</h3>
+    <p>Hippiestyle©. todos os direitos reservados.</p>
+
+  </footer>
+
+  <!-- Script da página Home -->
+  <script src="../script/home.js"></script>
 
 </body>
+
 </html>

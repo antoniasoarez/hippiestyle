@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carrinho | HippieStyle</title>
+    <link rel="stylesheet" href="../style/carrinho.css">
+</head>
+
+<body>
+
+    <header>
+        <h1 id="propriaPage">HippieStyle</h1>
+        <nav>
+            <a href="../pages/home.html">Início</a>
+            <a href="../pages/produtos.html">Produtos</a>
+            <a id="propriaPage" href="../pages/carrinho.html">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="layout-carrinho" id="layoutCarrinho">
+
+            <div class="coluna-produtos">
+                <section class="container-produtos">
+                    <h2>Seu Carrinho</h2>
+
+                    <p id="mensagem"></p>
+
+                    <div class="paineis-controle" id="paineisControle">
+                        <button type="button" class="btn-acao-global" onclick="ordenarCarrinho()">Ordenar A-Z</button>
+                        <button type="button" class="btn-acao-global" onclick="removerUltimoProduto()">Remover
+                            Último</button>
+                        <button type="button" class="btn-limpar-global" onclick="limparCarrinho()">Limpar
+                            Carrinho</button>
+                    </div>
+
+                    <ul id="ulCarrinho"></ul>
+                </section>
+            </div>
+
+            <aside class="coluna-resumo" id="colunaResumo">
+                <div class="card-resumo">
+                    <h3>Resumo do Pedido</h3>
+                    <hr class="divisor-resumo">
+
+                    <div class="linha-resumo">
+                        <span>Produtos:</span>
+                        <span id="txtQuantidadeCarrinho">Total de produtos: 0</span>
+                    </div>
+
+                    <div class="linha-resumo">
+                        <span>Subtotal itens:</span>
+                        <span id="txtSubtotalSimulado">R$ 0,00</span>
+                    </div>
+
+                    <div class="linha-resumo">
+                        <span>Frete:</span>
+                        <span id="txtFreteSimulado">R$ 15,00</span>
+                    </div>
+
+                    <div class="linha-resumo destaque-desconto">
+                        <span>Desconto:</span>
+                        <span id="txtDescontoSimulado">- R$ 0,00</span>
+                    </div>
+
+                    <hr class="divisor-resumo">
+
+                    <div class="linha-resumo valor-total">
+                        <span>Valor Total:</span>
+                        <span id="txtTotalCarrinho">Total: R$ 0,00</span>
+                    </div>
+
+                    <div class="botoes-checkout">
+                        <button type="button" class="btn-finalizar" onclick="finalizarCompra()">Finalizar
+                            Compra</button>
+                        <a href="produtos.html" class="link-continuar">Continuar Comprando</a>
+                    </div>
+
+                    <p id="finalizacao"></p>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <h3>HippieStyle</h3>
+        <div class="bloco-rodape">
+            <a href="#">Sobre Nós</a>
+            <a href="#">Políticas de Troca</a>
+            <a href="#">Fale Conosco</a>
+        </div>
+    </footer>
+
+    <script src="../script/carrinho.js"></script>
+</body>
+
+</html>

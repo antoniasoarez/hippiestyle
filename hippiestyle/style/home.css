@@ -1,7 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
-
-  /*
+/*
     Paleta de cores da Hippiestyle (a mesma da página de Cadastro):
     - fundo geral bem escuro (quase preto)
     - fundo dos "cartões" um pouco diferente do fundo da página
@@ -9,208 +8,237 @@
     - azul elétrico só como detalhe (links e hover)
   */
 
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #050507;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #050507;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
 
-  /* Cabeçalho do site: logo em cima e menu embaixo, tudo centralizado */
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px 30px 20px;
-  }
+/* Cabeçalho do site: logo em cima e menu embaixo, tudo centralizado */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px 30px 20px;
+}
 
-  /* O nome da marca usa a fonte Metal Mania, igual na página de Cadastro */
-  h1 {
-    font-family: 'Metal Mania', cursive;
-    font-size: 42px;
-    color: #ffffff;
-    text-align: center;
-    margin: 0;
-  }
+/* Modifica a seção do cabeçalho de acordo com a página que o usuário está*/
+#propriaPage {
+  color: #fff;
+  text-shadow: 0 0 5px #fff,
+    0 0 10px #343d5a,
+    0 0 20px #343d5a,
+    0 0 40px #343d5a,
+    0 0 80px #343d5a;
+}
 
-  /* Menu de navegação simples, com os links um do lado do outro */
-  nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-  }
+/* O nome da marca usa a fonte Metal Mania, igual na página de Cadastro */
+h1 {
+  font-family: 'Metal Mania', cursive;
+  font-size: 42px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+}
 
-  nav a {
-    color: #9aa5c8;
-    text-decoration: none;
-    font-size: 13px;
-    margin: 0 18px;
-    transition: color 0.3s;
-  }
+/* Menu de navegação simples, com os links um do lado do outro */
+nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
 
-  /* Quando o mouse passa por cima do link, ele fica azul elétrico */
-  nav a:hover {
-    color: #3a8bff;
-  }
+nav a {
+  color: #9aa5c8;
+  text-decoration: none;
+  font-size: 13px;
+  margin: 0 18px;
+  transition: color 0.3s;
+}
 
-  /* Área principal da página, onde ficam todas as seções */
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 20px 80px 20px;
-  }
+/* Quando o mouse passa por cima do link, ele fica azul elétrico */
+nav a:hover {
+  color: #3a8bff;
+}
+
+/* Área principal da página, onde ficam todas as seções */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 80px 20px;
+}
 
 
-  section {
-    width: 100%;
-    max-width: 700px;
-    background-color: #0a0a10;
-    border: 1px solid #14192b;
-    border-radius: 10px;
-    padding: 40px 35px;
-    margin-top: 40px;
-    text-align: center;
-  }
+section {
+  width: 100%;
+  max-width: 700px;
+  background-color: #0a0a10;
+  border: 1px solid #14192b;
+  border-radius: 10px;
+  padding: 40px 35px;
+  margin-top: 40px;
+  text-align: center;
+}
 
-  /* Título principal d("Coleções") */
-  h2 {
-    font-family: 'Metal Mania', cursive;
-    font-size: 40px;
-    text-align: center;
-    color: #ffffff;
-    margin: 0 0 20px 0;
-  }
+/* Título principal d("Coleções") */
+h2 {
+  font-family: 'Metal Mania', cursive;
+  font-size: 40px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
 
-  /* Título de cada categoria de produto (ex.: "Matuê") */
-  h3 {
-    font-family: 'Metal Mania', cursive;
-    font-size: 30px;
-    color: #ffffff;
-    text-align: center;
-    margin: 30px 0 20px 0;
-  }
+/* Título de cada categoria de produto (ex.: "Matuê") */
+h3 {
+  font-family: 'Metal Mania', cursive;
+  font-size: 30px;
+  color: #ffffff;
+  text-align: center;
+  margin: 30px 0 20px 0;
+}
 
-  p {
-    font-size: 14px;
-    color: #9aa5c8;
-    text-align: center;
-    margin: 8px 0;
-    font-weight: 700;
-  }
+p {
+  font-size: 14px;
+  color: #9aa5c8;
+  text-align: center;
+  margin: 8px 0;
+  font-weight: 700;
+}
 
-  /* Imagem da seção principal (hero) e das imagens dos produtos */
-  img {
-    width: 100%;
-    border-radius: 8px;
-  }
+/* Imagem da seção principal (hero) e das imagens dos produtos */
+img {
+  width: 100%;
+  border-radius: 8px;
+}
 
-  /*
+/*
     Cada produto é um bloco (div) porque dentro dele existem
     vários elementos juntos (imagem, nome, álbum e botão).
     Usamos flex-direction: column para empilhar tudo por dentro.
   */
-  .colecao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #050507;
-    border: 1px solid #14192b;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-  }
+.colecao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #050507;
+  border: 1px solid #14192b;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
 
-  .colecao h4 {
-    font-size: 14px;
-    color: #9aa5c8;
-    margin: 15px 0 4px 0;
-  }
+.colecao h4 {
+  font-size: 14px;
+  color: #9aa5c8;
+  margin: 15px 0 4px 0;
+}
 
-  .colecao p {
-    color: #ffffff;
-    margin: 0 0 15px 0;
-  }
+.colecao p {
+  color: #ffffff;
+  margin: 0 0 15px 0;
+}
 
-  /* Botão padrão do site, igual ao botão "Criar conta" da página de Cadastro */
-  button {
-    background-color: #14192b;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    padding: 14px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+/* Botão padrão do site, igual ao botão "Criar conta" da página de Cadastro */
+button {
+  background-color: #14192b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  /* O botão fica um pouco mais claro quando o mouse passa em cima */
-  button:hover {
-    background-color: #1f2a4d;
-  }
+/* O botão fica um pouco mais claro quando o mouse passa em cima */
+button:hover {
+  background-color: #1f2a4d;
+}
 
-  /* Formulário da newsletter (mesmo estilo dos campos do Cadastro) */
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+/* Formulário da newsletter (mesmo estilo dos campos do Cadastro) */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  label {
-    font-size: 13px;
-    color: #9aa5c8;
-    margin-bottom: 8px;
-  }
+label {
+  font-size: 13px;
+  color: #9aa5c8;
+  margin-bottom: 8px;
+}
 
-  input {
-    width: 100%;
-    max-width: 320px;
-    background-color: #000000;
-    border: 1px solid #14192b;
-    border-radius: 6px;
-    color: #ffffff;
-    font-size: 14px;
-    padding: 12px 14px;
-    margin-bottom: 16px;
-  }
+input {
+  width: 100%;
+  max-width: 320px;
+  background-color: #000000;
+  border: 1px solid #14192b;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
 
-  input:hover {
-    border: 1px solid #1f2a4d;
-  }
+input:hover {
+  border: 1px solid #1f2a4d;
+}
 
-  /* Rodapé do site: nome da marca, direitos autorais e links */
-  footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    border-top: 1px solid #14192b;
-  }
+/* Rodapé do site: nome da marca, direitos autorais e links */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  border-top: 1px solid #14192b;
+}
 
-  footer h3 {
-    margin-top: 0;
-  }
+footer h3 {
+  margin-top: 0;
+}
 
-  footer a {
-    color: #9aa5c8;
-    text-decoration: none;
-    font-size: 13px;
-    margin: 6px 0;
-    transition: color 0.3s;
-  }
+footer a {
+  color: #9aa5c8;
+  text-decoration: none;
+  font-size: 13px;
+  margin: 6px 0;
+  transition: color 0.3s;
+}
 
-  footer a:hover {
-    color: #3a8bff;
-  }
+footer a:hover {
+  color: #3a8bff;
+}
 
-  /*
+/*
     Cada bloco de links do rodapé (sociais e jurídico) é uma div
     porque precisamos agrupar um título com vários links embaixo.
   */
-  .bloco-rodape {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 25px;
+.bloco-rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+/* Responsividade simples */
+@media (max-width: 768px) {
+  article.card {
+    width: calc(50% - 10px);
   }
+
+  header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  article.card {
+    width: 100%;
+  }
+}

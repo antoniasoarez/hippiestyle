@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050507;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho do site */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px 30px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#propriaPage {
+    color: #fff;
+    text-shadow: 0 0 5px #fff,
+        0 0 10px #343d5a,
+        0 0 20px #343d5a,
+        0 0 40px #343d5a,
+        0 0 80px #343d5a;
+}
+
+h1 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 42px;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #9aa5c8;
+    text-decoration: none;
+    font-size: 13px;
+    margin: 5px 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #3a8bff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 80px 20px;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estrutura Modernizada em Grid de Duas Colunas */
+.layout-carrinho {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 40px;
+    align-items: start;
+}
+
+.coluna-produtos {
+    width: 100%;
+}
+
+.container-produtos {
+    width: 100%;
+    max-width: 100%;
+    background-color: #0a0a10;
+    border: 1px solid #14192b;
+    border-radius: 10px;
+    padding: 35px;
+    margin-top: 0;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 40px;
+    text-align: left;
+    color: #ffffff;
+    margin: 0 0 25px 0;
+}
+
+h3 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+
+p {
+    font-size: 14px;
+    color: #9aa5c8;
+    text-align: left;
+    margin: 8px 0;
+    font-weight: 700;
+}
+
+/* Painel superior com botões de controle de fluxo de dados */
+.paineis-controle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+button {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 18px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-acao-global {
+    background-color: #14192b;
+    color: #9aa5c8;
+    border: 1px solid #1f2a4d;
+    width: auto;
+}
+
+.btn-acao-global:hover {
+    background-color: #1f2a4d;
+    color: #ffffff;
+}
+
+.btn-limpar-global {
+    background-color: #240f0f;
+    color: #ff5c5c;
+    border: 1px solid #421919;
+    width: auto;
+}
+
+.btn-limpar-global:hover {
+    background-color: #421919;
+    color: #ffffff;
+}
+
+/* Reestruturação da lista para abrigar os Cards do E-commerce */
+#ulCarrinho {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Estrutura interna e visual de cada Card de Produto */
+.card-produto-carrinho {
+    display: flex;
+    align-items: center;
+    background-color: #050507;
+    border: 1px solid #14192b;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.card-produto-carrinho img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #14192b;
+    flex-shrink: 0;
+}
+
+.detalhes-produto {
+    flex: 1;
+}
+
+.detalhes-produto h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.detalhes-produto .descricao-carrinho {
+    font-size: 12px;
+    color: #6c799e;
+    font-weight: normal;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.detalhes-produto .preco-unitario {
+    font-size: 13px;
+    color: #3a8bff;
+    margin: 0;
+    text-align: left;
+}
+
+/* Área interativa de controle de quantidade e valores */
+.controles-valores-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stepper-quantidade {
+    display: flex;
+    align-items: center;
+    background-color: #0a0a10;
+    border: 1px solid #14192b;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.stepper-quantidade button {
+    background: transparent;
+    color: #ffffff;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 0;
+    width: auto;
+}
+
+.stepper-quantidade button:hover {
+    background-color: #14192b;
+}
+
+.stepper-quantidade .num-qtd {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 0 6px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.subtotal-produto {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+    min-width: 95px;
+    text-align: right;
+}
+
+.btn-remover-item {
+    background: transparent;
+    color: #ff5c5c;
+    border: none;
+    padding: 6px;
+    font-size: 16px;
+    width: auto;
+    transition: color 0.2s;
+}
+
+.btn-remover-item:hover {
+    color: #ff2b2b;
+    background: transparent;
+}
+
+/* Estilização da Coluna Lateral Fixa (Resumo) */
+.coluna-resumo {
+    width: 100%;
+    position: sticky;
+    top: 30px;
+}
+
+.card-resumo {
+    background-color: #0a0a10;
+    border: 1px solid #14192b;
+    border-radius: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.divisor-resumo {
+    border: 0;
+    border-top: 1px solid #14192b;
+    margin: 15px 0;
+}
+
+.linha-resumo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 14px 0;
+    font-size: 14px;
+    color: #9aa5c8;
+}
+
+.linha-resumo span:last-child {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.linha-resumo.destaque-desconto span:last-child {
+    color: #ff5c5c;
+}
+
+.linha-resumo.valor-total {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.linha-resumo.valor-total span:last-child {
+    color: #3a8bff;
+    font-size: 20px;
+    text-shadow: 0 0 10px rgba(58, 139, 255, 0.2);
+}
+
+.botoes-checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn-finalizar {
+    background-color: #3a8bff;
+    color: #ffffff;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px;
+    font-size: 14px;
+}
+
+.btn-finalizar:hover {
+    background-color: #2176ff;
+    box-shadow: 0 0 15px rgba(58, 139, 255, 0.4);
+}
+
+.link-continuar {
+    display: block;
+    text-align: center;
+    color: #9aa5c8;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px;
+    transition: color 0.3s;
+}
+
+.link-continuar:hover {
+    color: #3a8bff;
+}
+
+/* Feedbacks de Operações */
+#mensagem, #finalizacao {
+    font-size: 13px;
+    font-weight: 700;
+    min-height: 18px;
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+
+#mensagem.sucesso, #finalizacao.sucesso { color: #3a8bff; }
+#mensagem.erro, #finalizacao.erro { color: #ff5c5c; }
+
+/* Estado Vazio Interativo */
+.vazio-wrapper {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.vazio-wrapper .icon-vazio {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.vazio-wrapper p {
+    text-align: center;
+    font-size: 15px;
+    color: #9aa5c8;
+    margin-bottom: 30px;
+}
+
+.vazio-wrapper button {
+    margin: 0 auto;
+}
+
+/* Rodapé */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    border-top: 1px solid #14192b;
+    background-color: #050507;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer h3 {
+    margin-top: 0;
+}
+
+footer a {
+    color: #9aa5c8;
+    text-decoration: none;
+    font-size: 13px;
+    margin: 6px 0;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #3a8bff;
+}
+
+.bloco-rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsividade Adaptativa Completa */
+@media (max-width: 992px) {
+    .layout-carrinho {
+        grid-template-columns: 1fr;
+    }
+    
+    .coluna-resumo {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 30px 15px 20px 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 680px) {
+    .card-produto-carrinho {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .detalhes-produto .descricao-carrinho,
+    .detalhes-produto .preco-unitario {
+        text-align: center;
+    }
+
+    .controles-valores-item {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .subtotal-produto {
+        text-align: center;
+    }
+
+    .paineis-controle {
+        justify-content: center;
+    }
+}
