@@ -86,7 +86,15 @@ function alterarQuantidade(id, mudanca) {
         }
         return item;
     });
-    
+
+    // limita a quantidade máxima de 5 unidades por item e exibe feedback visual
+    const itemAlterado = cart.find(item => item.id === id);
+    if (itemAlterado.qty > 5) {
+        itemAlterado.qty = 5;
+        exibirMensagemFeedback("Quantidade máxima de 5 unidades por produto.", "erro");
+        return;
+    }
+
     exibirMensagemFeedback("Quantidade atualizada.", "sucesso");
     salvarEstadoERenderizar();
 }
@@ -152,23 +160,6 @@ function atualizarResumoValores() {
     document.getElementById('txtDescontoSimulado').innerText = `- ${formatBRL(desconto)}`;
 }
 
-// Função obrigatória: Executa a finalização limpando o estado após validação de segurança
-function finalizarCompra() {
-    if (cart.length === 0) {
-        exibirMensagemFinalizacao("O carrinho está vazio. Adicione produtos.", "erro");
-        return;
-    }
-
-    cart = [];
-    salvarEstadoERenderizar();
-
-    const campoFinalizacao = document.getElementById('finalizacao');
-    if (campoFinalizacao) {
-        campoFinalizacao.innerText = "Pedido realizado com sucesso! Obrigado por comprar na HippieStyle.";
-        campoFinalizacao.className = "sucesso";
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-}
 
 // Utilitário de persistência sincronizada no localStorage e atualização instantânea na UI
 function salvarEstadoERenderizar() {

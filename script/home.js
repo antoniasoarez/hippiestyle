@@ -7,7 +7,7 @@ function saudarUsuario() {
         document.getElementById('saudacao').innerText = `Bem-vindo, ${usuarioLogado}`;
     } else {
         // Se tentar acessar a home sem logar, força voltar pro login
-        window.location.href = 'login.html';
+        window.location.href = '../index.html';
     }
 }
 

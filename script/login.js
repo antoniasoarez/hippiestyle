@@ -6,7 +6,7 @@ function criarEstiloNotificacao() {
     const estilo = document.createElement('style');
     estilo.id = 'estilo-notificacao';
 
-    /* CORREÇÃO: Comentários do CSS ajustados */
+    
     estilo.textContent = `
         /* Container fixo no canto superior direito que vai empilhar as notificações */
         #container-notificacoes {
@@ -98,7 +98,7 @@ function mostrarNotificacao(texto, tipo, duracao = 4000) {
  * Função responsável por validar as credenciais do usuário puxando os dados do localStorage.
  */
 function fazerLogin() {
-    /* CORREÇÃO: IDs corrigidos para baterem com o login.html */
+    /* CORREÇÃO: IDs corrigidos para baterem com o index.html */
     const emailInput = document.getElementById('email').value.trim();
     const senhaInput = document.getElementById('senha').value.trim();
 
@@ -111,7 +111,7 @@ function fazerLogin() {
         return;
     }
 
-    /* CORREÇÃO CRÍTICA: Recupera o array de usuários que foi gravado no cadastro */
+    /*Recupera o array de usuários que foi gravado no cadastro */
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
     // Procura no array se existe algum objeto usuário com correspondência exata de email e senha
@@ -135,4 +135,10 @@ function fazerLogin() {
         mostrarNotificacao('E-mail ou senha inválidos.', 'erro');
         if(divMsg) { divMsg.textContent = 'Usuário ou senha inválidos.'; divMsg.className = 'msg error'; }
     }
+}
+
+// Função para exibir mensagem de redirecionamento quando o usuário não está logado
+function Redirecionamento(){
+    let msgRedirecionamento = document.getElementById("msgRedirecionamento");
+    msgRedirecionamento.textContent = "É necessário estar logado para acessar esta página.";
 }

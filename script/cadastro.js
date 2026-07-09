@@ -109,7 +109,7 @@ function obterContainerNotificacoes() {
 /**
  * Função principal para exibir uma notificação na tela.
  */
-function mostrarNotificacao(texto, tipo, duracao, botaoExtra) {
+function mostrarNotificacao(texto, tipo, duracao = 4000, botaoExtra) {
     criarEstiloNotificacao();
     const container = obterContainerNotificacoes();
 
@@ -194,6 +194,20 @@ function criarConta() {
         return;
     }
 
+
+    // Verifica se o e-mail é válido (verifica se contém "@"; verifica se contem "texto.com" após esse @; verifica se começa com número ou caractere especial)
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmail.test(email)) {
+        mostrarNotificacao('O e-mail informado é inválido.', 'erro');
+        return;
+    }
+
+    //Limita a quantidade de caracteres do telefone para 11, caso o usuário tente inserir mais ou menos caracteres, ele será alertado com uma notificação de erro.
+    if (telefone !== '' && telefone.length !== 11) {
+        mostrarNotificacao('O telefone deve ter 11 caracteres.', 'erro');
+        return;
+    }
+
     const novoUsuario = {
         nome: nome,
         email: email,
@@ -221,7 +235,7 @@ function exibirNotificacaoDeCadastroConcluido() {
 
     // CORREÇÃO: Redirecionamento configurado num único local centralizado para evitar loops
     const redirecionar = () => {
-        window.location.href = 'pages/login.html';
+        window.location.href = '../index.html';
     };
 
     const timeoutRedirecionamento = setTimeout(redirecionar, 5000);
@@ -239,4 +253,10 @@ function limparFormulario() {
     document.getElementById('telefone').value = '';
     document.getElementById('senha').value = '';
     document.getElementById('confirmar').value = '';
+}
+
+// Função para exibir mensagem de redirecionamento quando o usuário não está logado
+function Redirecionamento(){
+    let msgRedirecionamento = document.getElementById("msgRedirecionamento");
+    msgRedirecionamento.textContent = "É necessário estar logado para acessar esta página.";
 }
