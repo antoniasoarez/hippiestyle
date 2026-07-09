@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hippiestyle - Perfil de Acesso</title>
+    <link rel="stylesheet" href="../style/perfil.css"/>
+</head>
+<body>
+
+    <header>
+        <h1>hippiestyle</h1>
+        <nav>
+            <a href="produtos.html">shop</a>
+            <a href="#">archive</a>
+            <a href="#">drops</a>
+            <a href="carrinho.html">carrinho</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-layout">
+        <div id="msgRedirecionamento" class="error-msg"></div>
+
+        <div class="dashboard-grid">
+            <section class="profile-sidebar">
+                <h2>perfil</h2>
+                
+                <div class="avatar-container">
+                    <div class="avatar-wrapper">
+                        <img id="avatar-img" src="" alt="Foto de perfil" style="display:none; width:100%; height:100%; border-radius:50%; object-fit:cover;"/>
+                        <div id="avatar-placeholder" class="avatar-icon"></div>
+                        <label for="upload-avatar" class="change-avatar-label">alterar</label>
+                        <input type="file" id="upload-avatar" accept="image/*" style="display: none;"/>
+                    </div>
+                    <h3 id="user-name">@carregando...</h3>
+                    <p id="user-email" class="email-text">email@dominio.com</p>
+                </div>
+
+                <div class="info-list">
+                    <div class="info-row">
+                        <span>telefone:</span>
+                        <span id="user-phone">--</span>
+                    </div>
+                    <div class="info-row">
+                        <span>nível:</span>
+                        <span class="highlight">arquivista</span>
+                    </div>
+                </div>
+
+                <button id="btn-logout" class="btn-block">sair do sistema</button>
+            </section>
+
+            <div class="dashboard-main">
+                
+                <section class="full-panel">
+                    <h2>seus produtos no carrinho</h2>
+                    <div id="lista-produtos-perfil" class="orders-container">
+                        </div>
+                    <div class="total-perfil-box">
+                        <p id="total-perfil-txt">total do carrinho: r$ 0,00</p>
+                    </div>
+                </section>
+
+                <div class="sub-cards-grid">
+                    <section class="sub-card">
+                        <h2>entrega</h2>
+                        <div id="box-endereco-visual" class="address-box">
+                            <p id="txt-endereco">nenhum endereço cadastrado.</p>
+                        </div>
+                        
+                        <div id="form-endereco" style="display: none; flex-direction: column; gap: 8px; margin-bottom: 15px;">
+                            <input type="text" id="input-endereco" placeholder="rua, número, bairro" style="width:100%;"/>
+                            <input type="text" id="input-cidade" placeholder="cidade - sp" style="width:100%;"/>
+                        </div>
+
+                        <button id="btn-editar-endereco" class="secondary-btn">editar endereço</button>
+                    </section>
+
+                    <section class="sub-card">
+                        <h2>pagamento</h2>
+                        <div class="payment-box">
+                            <p>método padrão</p>
+                            <p class="order-sub">pix / cartão na finalização</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 hippiestyle. all rights reserved.</p>
+    </footer>
+
+    <script src="../script/perfil.js"></script>
+</body>
+</html>
