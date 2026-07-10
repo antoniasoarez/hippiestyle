@@ -367,7 +367,8 @@ button {
 }
 
 /* Feedbacks de Operações */
-#mensagem, #finalizacao {
+#mensagem,
+#finalizacao {
     font-size: 13px;
     font-weight: 700;
     min-height: 18px;
@@ -375,8 +376,15 @@ button {
     margin: 0 0 15px 0;
 }
 
-#mensagem.sucesso, #finalizacao.sucesso { color: #3a8bff; }
-#mensagem.erro, #finalizacao.erro { color: #ff5c5c; }
+#mensagem.sucesso,
+#finalizacao.sucesso {
+    color: #3a8bff;
+}
+
+#mensagem.erro,
+#finalizacao.erro {
+    color: #ff5c5c;
+}
 
 /* Estado Vazio Interativo */
 .vazio-wrapper {
@@ -440,7 +448,7 @@ footer a:hover {
     .layout-carrinho {
         grid-template-columns: 1fr;
     }
-    
+
     .coluna-resumo {
         position: static;
     }
@@ -483,4 +491,25 @@ footer a:hover {
     .paineis-controle {
         justify-content: center;
     }
+}
+
+#botaoPerfil {
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  z-index: 999;
+  background-color: #0a0a10;
+  color: #9aa5c8;
+  border: 1px solid #14192b;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+#botaoPerfil:hover {
+  color: #3a8bff;
+  border-color: #1f2a4d;
 }
