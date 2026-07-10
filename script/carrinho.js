@@ -1,6 +1,9 @@
 // Gerenciamento e persistência do Estado da aplicação usando a chave exata requisitada
 let cart = JSON.parse(localStorage.getItem('hippiestyle_cart')) || [];
 
+// Estado auxiliar para impedir múltiplos cliques durante o processamento da compra
+let processandoFinalizacao = false;
+
 // Função utilitária interna de formatação financeira em padrão brasileiro (BRL)
 function formatBRL(valor) {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -26,7 +29,7 @@ function renderizarCarrinho() {
                 <button type="button" class="btn-finalizar" style="max-width: 220px;" onclick="window.location.href='produtos.html'">Voltar para a Loja</button>
             </div>
         `;
-        
+
         // Zera os contadores nativos requeridos
         document.getElementById('txtQuantidadeCarrinho').innerText = "Total de produtos: 0";
         document.getElementById('txtTotalCarrinho').innerText = "Total: R$ 0,00";
@@ -133,6 +136,46 @@ function limparCarrinho() {
     cart = [];
     exibirMensagemFeedback("Carrinho esvaziado com sucesso.", "sucesso");
     salvarEstadoERenderizar();
+}
+
+// Função obrigatória: processa a finalização da compra, exibe a confirmação e reinicia o carrinho
+function finalizarCompra() {
+    // Guarda de segurança: não deveria ocorrer, pois o botão só é visível com itens no carrinho
+    if (!cart || cart.length === 0) {
+        exibirMensagemFeedback("Seu carrinho está vazio.", "erro");
+        return;
+    }
+
+    // Evita múltiplos cliques enquanto a confirmação está sendo exibida
+    if (processandoFinalizacao) return;
+    processandoFinalizacao = true;
+
+    // Recalcula o valor final usando a mesma regra de negócio do resumo lateral
+    let subtotalGeral = 0;
+    cart.forEach(item => subtotalGeral += item.price * item.qty);
+    const frete = subtotalGeral > 150 ? 0 : 15.00;
+    const desconto = subtotalGeral > 100 ? subtotalGeral * 0.10 : 0;
+    const valorTotalFinal = subtotalGeral + frete - desconto;
+
+    // Desabilita o botão para evitar múltiplos envios enquanto a confirmação é exibida
+    const btnFinalizar = document.querySelector('#colunaResumo .btn-finalizar');
+    if (btnFinalizar) {
+        btnFinalizar.disabled = true;
+        btnFinalizar.innerText = 'Processando...';
+    }
+
+    exibirMensagemFinalizacao(
+        `Pedido confirmado! Total pago: ${formatBRL(valorTotalFinal)}. Obrigado por comprar na HippieStyle.`,
+        "sucesso"
+    );
+
+    // Aguarda alguns segundos para o cliente visualizar a confirmação antes de reiniciar o carrinho
+    setTimeout(() => {
+        cart = [];
+        localStorage.removeItem('hippiestyle_cart');
+        processandoFinalizacao = false;
+        renderizarCarrinho();
+    }, 3500);
 }
 
 // Lógica de cálculo matemático do fechamento financeiro lateral (com simulação de frete e desconto)
