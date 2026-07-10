@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Hippiestyle - Perfil de Acesso</title>
-    <link rel="stylesheet" href="../style/perfil.css"/>
+    <link rel="stylesheet" href="../style/perfil.css" />
 </head>
+
 <body>
 
     <header>
         <h1>hippiestyle</h1>
         <nav>
-            <a href="produtos.html">shop</a>
-            <a href="#">archive</a>
-            <a href="#">drops</a>
-            <a href="carrinho.html">carrinho</a>
+            <a id="propriaPage" href="home.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="carrinho.html">Carrinho</a>
         </nav>
     </header>
 
@@ -24,13 +25,14 @@
         <div class="dashboard-grid">
             <section class="profile-sidebar">
                 <h2>perfil</h2>
-                
+
                 <div class="avatar-container">
                     <div class="avatar-wrapper">
-                        <img id="avatar-img" src="" alt="Foto de perfil" style="display:none; width:100%; height:100%; border-radius:50%; object-fit:cover;"/>
+                        <img id="avatar-img" src="" alt="Foto de perfil"
+                            style="display:none; width:100%; height:100%; border-radius:50%; object-fit:cover;" />
                         <div id="avatar-placeholder" class="avatar-icon"></div>
                         <label for="upload-avatar" class="change-avatar-label">alterar</label>
-                        <input type="file" id="upload-avatar" accept="image/*" style="display: none;"/>
+                        <input type="file" id="upload-avatar" accept="image/*" style="display: none;" />
                     </div>
                     <h3 id="user-name">@carregando...</h3>
                     <p id="user-email" class="email-text">email@dominio.com</p>
@@ -51,11 +53,11 @@
             </section>
 
             <div class="dashboard-main">
-                
+
                 <section class="full-panel">
                     <h2>seus produtos no carrinho</h2>
                     <div id="lista-produtos-perfil" class="orders-container">
-                        </div>
+                    </div>
                     <div class="total-perfil-box">
                         <p id="total-perfil-txt">total do carrinho: r$ 0,00</p>
                     </div>
@@ -67,10 +69,12 @@
                         <div id="box-endereco-visual" class="address-box">
                             <p id="txt-endereco">nenhum endereço cadastrado.</p>
                         </div>
-                        
-                        <div id="form-endereco" style="display: none; flex-direction: column; gap: 8px; margin-bottom: 15px;">
-                            <input type="text" id="input-endereco" placeholder="rua, número, bairro" style="width:100%;"/>
-                            <input type="text" id="input-cidade" placeholder="cidade - sp" style="width:100%;"/>
+
+                        <div id="form-endereco"
+                            style="display: none; flex-direction: column; gap: 8px; margin-bottom: 15px;">
+                            <input type="text" id="input-endereco" placeholder="rua, número, bairro"
+                                style="width:100%;" />
+                            <input type="text" id="input-cidade" placeholder="cidade - sp" style="width:100%;" />
                         </div>
 
                         <button id="btn-editar-endereco" class="secondary-btn">editar endereço</button>
@@ -94,4 +98,5 @@
 
     <script src="../script/perfil.js"></script>
 </body>
+
 </html>

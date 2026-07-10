@@ -22,6 +22,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 50px 20px 30px 20px;
+  position: relative;
 }
 
 /* Modifica a seção do cabeçalho de acordo com a página que o usuário está*/
@@ -71,7 +72,6 @@ main {
   padding: 0 20px 80px 20px;
 }
 
-
 section {
   width: 100%;
   max-width: 700px;
@@ -83,7 +83,7 @@ section {
   text-align: center;
 }
 
-/* Título principal d("Coleções") */
+/* Título principal ("Coleções") */
 h2 {
   font-family: 'Metal Mania', cursive;
   font-size: 40px;
@@ -241,4 +241,24 @@ footer a:hover {
   article.card {
     width: 100%;
   }
+}
+
+/* Botão fixo no canto que leva ao perfil (ou cadastro, se não logado) */
+#botaoPerfil {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 999;
+  background-color: #3a8bff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+#botaoPerfil:hover {
+  background-color: #1f6fe0;
 }

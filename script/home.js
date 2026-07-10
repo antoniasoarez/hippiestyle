@@ -1,60 +1,113 @@
-/**
- * Verifica se o usuário está logado e exibe a mensagem de boas-vindas.
- */
-function saudarUsuario() {
+/* SISTEMA DE NOTIFICAÇÕES (TOAST) — replicado aqui pois home.html não carrega login.js/cadastro.js */
+
+function criarEstiloNotificacao() {
+    if (document.getElementById('estilo-notificacao')) return;
+
+    const estilo = document.createElement('style');
+    estilo.id = 'estilo-notificacao';
+    estilo.textContent = `
+    #container-notificacoes {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 9999;
+    }
+    .notificacao {
+      min-width: 260px;
+      max-width: 320px;
+      padding: 15px 18px;
+      border-radius: 8px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateX(120%);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .notificacao.mostrar { opacity: 1; transform: translateX(0); }
+    .notificacao.esconder { opacity: 0; transform: translateX(120%); }
+    .notificacao.sucesso { background-color: #14192b; border: 1px solid #3a8bff; }
+    .notificacao.erro { background-color: #1a1015; border: 1px solid #6b2b2b; }
+  `;
+    document.head.appendChild(estilo);
+}
+
+function obterContainerNotificacoes() {
+    let container = document.getElementById('container-notificacoes');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'container-notificacoes';
+        document.body.appendChild(container);
+    }
+    return container;
+}
+
+function mostrarNotificacao(texto, tipo, duracao = 4000) {
+    criarEstiloNotificacao();
+    const container = obterContainerNotificacoes();
+
+    const notificacao = document.createElement('div');
+    notificacao.className = `notificacao ${tipo}`;
+
+    const mensagem = document.createElement('p');
+    mensagem.textContent = texto;
+    mensagem.style.margin = '0';
+    notificacao.appendChild(mensagem);
+
+    container.appendChild(notificacao);
+
+    setTimeout(() => notificacao.classList.add('mostrar'), 10);
+
+    setTimeout(() => {
+        notificacao.classList.remove('mostrar');
+        notificacao.classList.add('esconder');
+        setTimeout(() => notificacao.remove(), 400);
+    }, duracao);
+}
+
+/* BOTÃO DE PERFIL */
+
+function irParaPerfil() {
     const usuarioLogado = sessionStorage.getItem('usuarioLogado');
+
     if (usuarioLogado) {
-        document.getElementById('saudacao').innerText = `Bem-vindo, ${usuarioLogado}`;
+        window.location.href = 'perfil.html';
     } else {
-        // Se tentar acessar a home sem logar, força voltar pro login
-        window.location.href = '../index.html';
+        mostrarNotificacao('Você precisa estar logado para acessar o perfil.', 'erro');
+        setTimeout(() => {
+            window.location.href = 'cadastro.html';
+        }, 2000);
     }
 }
 
-/**
- * Dados das roupas do catálogo (Hardcoded conforme pedido)
- */
-const catalogo = {
-    matue: {
-        tresTresTres: ["Maria", "333", "Isso é Sério", "O Som"]
-    },
-    lilgiela33: {
-        tantoFaz: ["Tanto Faz", "Nunca Entenderam", "GAAP", "Sala da Escola"]
+document.getElementById('botaoPerfil').addEventListener('click', irParaPerfil);
 
+/* NEWSLETTER */
+
+function inscrever() {
+    const emailInput = document.getElementById('email-newsletter');
+    const email = emailInput.value.trim();
+    const mensagem = document.getElementById('mensagem-inscricao');
+
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email === '') {
+        mostrarNotificacao('Digite seu e-mail para se inscrever.', 'erro');
+        if (mensagem) mensagem.textContent = 'Digite um e-mail.';
+        return;
     }
-};
 
-/**
- * Função para gerar os cards em HTML semântico (<article>).
- * Recebe a lista de nomes e o ID da div onde as roupas serão inseridas.
- */
-function renderizarCards(listaRoupas, idContainer) {
-    const container = document.getElementById(idContainer);
-    let html = '';
-
-    // Loop pela lista para montar cada card
-    for (let i = 0; i < listaRoupas.length; i++) {
-        // Criação do card com ícone genérico em SVG para simular a camiseta
-        html += `
-            <article class="card">
-                <div class="card-icon">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#c0c0c0" stroke-width="2">
-                        <path d="M20.66 6.98l-7.3-3.46c-1.12-.53-2.61-.53-3.73 0L2.34 6.98a1.5 1.5 0 0 0-.64 2.1l1.52 2.5a1.5 1.5 0 0 0 2.22.42L6 11.6V20a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8.4l.56.4a1.5 1.5 0 0 0 2.22-.42l1.52-2.5a1.5 1.5 0 0 0-.64-2.1z"></path>
-                    </svg>
-                </div>
-                <h4>T-Shirt "${listaRoupas[i]}"</h4>
-                <p>Edição Limitada</p>
-            </article>
-        `;
+    if (!regexEmail.test(email)) {
+        mostrarNotificacao('E-mail inválido. Verifique e tente novamente.', 'erro');
+        if (mensagem) mensagem.textContent = 'E-mail inválido.';
+        return;
     }
-    
-    // Insere os artigos no HTML
-    container.innerHTML = html;
+
+    mostrarNotificacao('Inscrição realizada com sucesso!', 'sucesso');
+    if (mensagem) mensagem.textContent = 'Você foi inscrito com sucesso!';
+    emailInput.value = '';
 }
-
-// Inicializa a página
-saudarUsuario();
-renderizarCards(catalogo.matue.maquinaDoTempo, 'grid-matue-1');
-renderizarCards(catalogo.matue.tresTresTres, 'grid-matue-2');
-renderizarCards(catalogo.lilgiela33.tantoFaz, 'grid-lilgiela-1');
-renderizarCards(catalogo.lilgiela33.hateThisAlbum, 'grid-lilgiela-2');
