@@ -51,6 +51,7 @@ nav a {
     font-size: 13px;
     margin: 5px 18px;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 nav a:hover {

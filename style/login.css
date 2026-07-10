@@ -45,6 +45,7 @@
    font-size: 13px;
    margin: 0 18px;
    transition: color 0.3s;
+   cursor: pointer;
  }
 
  nav a:hover {
@@ -158,3 +159,5 @@
      width: 100%;
    }
  }
+
+ 

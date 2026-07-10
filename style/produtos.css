@@ -56,6 +56,7 @@ nav a {
   font-size: 13px;
   margin: 0 18px;
   transition: color 0.3s;
+  cursor: pointer;
 }
 
 /* Quando o mouse passa por cima do link, ele fica azul elétrico */
